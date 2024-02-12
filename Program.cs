@@ -62,6 +62,9 @@ public class Client : IAfficher
     }
 }
 
+/// <summary>
+/// Classe permettant de créer des comptes bancaire
+/// </summary>
 public class Compte : IAfficher
 {
     private double solde;
@@ -72,18 +75,30 @@ public class Compte : IAfficher
     public double Solde => solde;
     public int Id => id;
 
+    /// <summary>
+    /// Constructeur par defaut avec incrémentation de l'identifiant et du nombre de compte
+    /// </summary>
     public Compte()
     {
         compteur++;
         id = compteur;
     }
 
+    /// <summary>
+    /// Constructeur paramêtré
+    /// </summary>
+    /// <param name="solde">Sole du client</param>
+    /// <param name="client">Client créant le compte</param>
     public Compte(double solde, Client client) : this()
     {
         this.solde = solde;
         this.Client = client;
     }
 
+    /// <summary>
+    /// Constructeur par copie
+    /// </summary>
+    /// <param name="compte">Compte à copier</param>
     public Compte(Compte compte) : this()
     {
         this.Client = compte.Client;
@@ -92,34 +107,59 @@ public class Compte : IAfficher
     }
 
 
+    /// <summary>
+    /// Méthode interne à la classe afin de créditer un solde
+    /// </summary>
+    /// <param name="solde">solde à ajouter</param>
     private void Crediter(double solde)
     {
         this.solde += solde;
     }
 
+    /// <summary>
+    /// Méthode permettant à un utilisateur créditeur de réaliser une transaction avec un autre compte
+    /// </summary>
+    /// <param name="solde">solde à créditer</param>
+    /// <param name="compte">compte à débiter</param>
     public void Crediter(double solde, Compte compte)
     {
         this.solde += solde;
         compte.Debiter(solde);
     }
 
+    /// <summary>
+    /// Méthode interne à la classe afin de débiter un solde
+    /// </summary>
+    /// <param name="solde">solde à soustraire</param>
     private void Debiter(double solde)
     {
         this.solde -= solde;
     }
 
+    /// <summary>
+    /// Méthode permettant à un utilisateur débiteur de réaliser une transaction avec un autre compte
+    /// </summary>
+    /// <param name="solde">solde à débiter</param>
+    /// <param name="compte">compte à créditer</param>
     public void Debiter(double solde, Compte compte)
     {
         this.solde -= solde;
         compte.Crediter(solde);
     }
 
+    /// <summary>
+    /// Méthode permettant d'afficher un compte
+    /// </summary>
     public void Afficher()
     {
         Console.WriteLine(
             $"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t Nombre de compte= {compteur}.");
     }
 
+    /// <summary>
+    /// Retourne le nombre de compte
+    /// </summary>
+    /// <returns>Nombre de compte</returns>
     public int NumberOfAcount()
     {
         return id;
