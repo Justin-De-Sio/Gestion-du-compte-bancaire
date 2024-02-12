@@ -19,6 +19,9 @@ public class Client : IAfficher
     public string Prenom { get; set; }
     public string Tel { get; set; }
     
+    /// <summary>
+    /// Constructeur par defaut
+    /// </summary>
     public Client()
     {
         this.CIN = "";
@@ -27,6 +30,14 @@ public class Client : IAfficher
         this.Tel = "";
     }
     
+    /// <summary>
+    /// Constructeur paramétré
+    /// </summary>
+    /// <param name="cin">Carte National d'Identité</param>
+    /// <param name="nom">Nom du client</param>
+    /// <param name="prenom">Prénom du client</param>
+    /// <param name="tel">Numéro de téléphone
+    /// </param>
     public Client(string cin, string nom, string prenom, string tel)
     {
         CIN = cin;
@@ -35,9 +46,16 @@ public class Client : IAfficher
         this.Tel = tel;
     }
 
+    /// <summary>
+    /// Constructeur par copie
+    /// </summary>
+    /// <param name="c">Client à copier</param>
     public Client(Client c) : this(c.CIN, c.Nom, c.Prenom, c.Tel) {}
 
 
+    /// <summary>
+    /// Méthode permettant d'afficher un client
+    /// </summary>
     public void Afficher()
     {
         Console.WriteLine($"Client : CIN= {CIN}\n\t nom= {Nom} \n\t prenom= {Prenom}\n\t tel= {Tel}");
