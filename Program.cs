@@ -232,34 +232,34 @@ public class Program
 
         TestCreationClient();
         TestCreationCompt();
-        TestDebitCredit();
+        TestCredit();
         TestSoldeNonSuffisant();
     }
 
     private static void TestCreationClient()
     {
-        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
-        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Client thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
         Client defaut = new Client();
-        Client ThomasCopie = new Client(Thomas);
+        Client thomasCopie = new Client(thomas);
         
         Console.WriteLine("clients créer par paramêtre : ");
-        Thomas.Afficher();
-        Justin.Afficher();
+        thomas.Afficher();
+        justin.Afficher();
         
         Console.WriteLine("Client créer par defaut : ");
         defaut.Afficher();
         
         Console.WriteLine("Client créer par copie : ");
-        ThomasCopie.Afficher();
+        thomasCopie.Afficher();
     }
 
     private static void TestCreationCompt()
     {
-        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
-        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
-        Compte thom = new Compte(10000, Thomas);
-        Compte just = new Compte(20000, Justin);
+        Client thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(10000, thomas);
+        Compte just = new Compte(20000, justin);
         Compte defaut = new Compte();
         
         Console.WriteLine("Compte créer avec parametre : ");
@@ -270,25 +270,46 @@ public class Program
         defaut.Afficher();
         
         Console.WriteLine("Nombre de compte (7): " + Compteur.NombreDeCompte);
-        Compte thom2 = new Compte(1000, Thomas);
+        Compte thom2 = new Compte(1000, thomas);
     }
 
-    private static void TestDebitCredit()
+    private static void TestCredit()
     {
-        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
-        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
-        Compte thom = new Compte(10000, Thomas);
-        Compte just = new Compte(20000, Justin);
+        Client thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(10000, thomas);
+        Compte just = new Compte(20000, justin);
         
+        Console.WriteLine("Avant le Crédit");
+        thom.Afficher();
+        just.Afficher();
         thom.Crediter(1000, just);
+        Console.WriteLine("Apres le Crédit");
+        thom.Afficher();
+        justin.Afficher();    }
+    
+    private static void TestDebit()
+    {
+        Client thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(10000, thomas);
+        Compte just = new Compte(20000, justin);
+        
+        Console.WriteLine("Avant le Débit");
+        thom.Afficher();
+        just.Afficher();
+        thom.Debiter(1000, just);
+        Console.WriteLine("Apres le Débit");
+        thom.Afficher();
+        justin.Afficher();
     }
 
     private static void TestSoldeNonSuffisant()
     {
-        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
-        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
-        Compte thom = new Compte(0, Thomas);
-        Compte just = new Compte(20000, Justin);
+        Client thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(0, thomas);
+        Compte just = new Compte(20000, justin);
         
         thom.Crediter(1000, just);
     }
