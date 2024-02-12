@@ -335,6 +335,6 @@ public class Program
         Compte thom = new Compte(0, thomas);
         Compte just = new Compte(20000, justin);
 
-        thom.Crediter(1000, just);
+        thom.Debiter(1000, just);
     }
 }
