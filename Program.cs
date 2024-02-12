@@ -182,15 +182,24 @@ public class Compte : IAfficher
     }
 }
 
+/// <summary>
+/// Classe compteur pour la gestion du nombre de compte créer
+/// </summary>
 public static class Compteur
 {
     public static int NombreDeCompte { get; set; }
 
+    /// <summary>
+    /// Méthode incrémentant le nombre de compte
+    /// </summary>
     public static void Increment()
     {
         NombreDeCompte++;
     }
     
+    /// <summary>
+    /// Méthode décrémentant le nombre de compte
+    /// </summary>
     public static void Decrement()
     {
         NombreDeCompte--;
