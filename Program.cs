@@ -53,13 +53,15 @@ public class Compte : IAfficher
     private double solde;
     private int id;
     public Client client;
+    public static int compteur = 0;
     
     public double Solde => solde;
     public int Id => id;
 
     public Compte()
     {
-        id++;
+        compteur++;
+        id = compteur;
     }
 
     public Compte(double solde, Client client) : base()
