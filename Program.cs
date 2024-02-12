@@ -50,7 +50,9 @@ public class Client : IAfficher
     /// Constructeur par copie
     /// </summary>
     /// <param name="c">Client à copier</param>
-    public Client(Client c) : this(c.CIN, c.Nom, c.Prenom, c.Tel) {}
+    public Client(Client c) : this(c.CIN, c.Nom, c.Prenom, c.Tel)
+    {
+    }
 
 
     /// <summary>
@@ -72,16 +74,23 @@ public class Compte : IAfficher
     public Client Client { get; }
     private static int compteur = 0;
 
-    public double Solde => solde;
-    public int Id => id;
+    public double Solde
+    {
+        get => solde;
+    }
+
+    public int Id
+    {
+        get => id;
+    }
 
     /// <summary>
     /// Constructeur par defaut avec incrémentation de l'identifiant et du nombre de compte
     /// </summary>
     public Compte()
     {
-        compteur++;
-        id = compteur;
+        Compteur.Increment();
+        id = Compteur.NombreDeCompte;
     }
 
     /// <summary>
@@ -123,8 +132,15 @@ public class Compte : IAfficher
     /// <param name="compte">compte à débiter</param>
     public void Crediter(double solde, Compte compte)
     {
-        this.solde += solde;
-        compte.Debiter(solde);
+        if (this.solde >= solde)
+        {
+            this.Debiter(solde);
+            compte.Crediter(solde);
+        }
+        else
+        {
+            Console.WriteLine("Solde insuffisant");
+        }
     }
 
     /// <summary>
@@ -153,7 +169,7 @@ public class Compte : IAfficher
     public void Afficher()
     {
         Console.WriteLine(
-            $"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t Nombre de compte= {compteur}.");
+            $"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t");
     }
 
     /// <summary>
@@ -166,6 +182,22 @@ public class Compte : IAfficher
     }
 }
 
+public static class Compteur
+{
+    public static int NombreDeCompte { get; set; }
+
+    public static void Increment()
+    {
+        NombreDeCompte++;
+    }
+    
+    public static void Decrement()
+    {
+        NombreDeCompte--;
+    }
+    
+    
+}
 public class Program
 {
     public static void Main(string[] args)
