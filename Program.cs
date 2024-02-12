@@ -254,6 +254,7 @@ public class Program
         TestCreationClient();
         TestCreationCompt();
         TestCredit();
+        TestDebit();
         TestSoldeNonSuffisant();
     }
 
@@ -307,8 +308,9 @@ public class Program
         thom.Crediter(1000, just);
         Console.WriteLine("Apres le Crédit");
         thom.Afficher();
-        justin.Afficher();
+        just.Afficher();
     }
+
 
     private static void TestDebit()
     {
@@ -323,7 +325,7 @@ public class Program
         thom.Debiter(1000, just);
         Console.WriteLine("Apres le Débit");
         thom.Afficher();
-        justin.Afficher();
+        just.Afficher();
     }
 
     private static void TestSoldeNonSuffisant()
