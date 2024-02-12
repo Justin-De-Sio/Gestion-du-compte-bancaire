@@ -33,18 +33,12 @@ public class Client : IAfficher
         this.Tel = tel;
     }
 
-    public Client(Client c)
-    {
-        this.CIN = c.CIN;
-        this.Nom = c.Nom;
-        this.Prenom = c.Prenom;
-        this.Tel = c.Tel;
-    }
+    public Client(Client c) : this(c.CIN, c.Nom, c.Prenom, c.Tel) {}
 
 
     public void Afficher()
     {
-        Console.WriteLine($"Client : CIN= {CIN}\n\t nom= { Nom } \n\t prenom= {Prenom}\n\t tel= {Tel}");
+        Console.WriteLine($"Client : CIN= {CIN}\n\t nom= {Nom} \n\t prenom= {Prenom}\n\t tel= {Tel}");
     }
 }
 
@@ -52,9 +46,9 @@ public class Compte : IAfficher
 {
     private double solde;
     private int id;
-    public Client Client;
+    public Client Client { get; }
     private static int compteur = 0;
-    
+
     public double Solde => solde;
     public int Id => id;
 
@@ -102,7 +96,8 @@ public class Compte : IAfficher
 
     public void Afficher()
     {
-        Console.WriteLine($"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t Nombre de compte= {compteur}.");
+        Console.WriteLine(
+            $"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t Nombre de compte= {compteur}.");
     }
 
     public int NumberOfAcount()
@@ -117,7 +112,7 @@ public class Program
     {
         Client thomas = new Client("azert", "ROBERT", "Thomas", "+1234567890");
         Client justin = new Client("azerty", "DE SIO", "Justin", "+331234567890");
-        
+
         thomas.Afficher();
         justin.Afficher();
 
@@ -128,9 +123,9 @@ public class Program
 
         Compte c = new Compte(1234, thomas);
         c.Afficher();
-        
+
         a.Crediter(100, b);
-        
+
         a.Afficher();
         b.Afficher();
     }
