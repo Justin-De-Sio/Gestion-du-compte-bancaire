@@ -15,7 +15,7 @@ public class Client : IAfficher
     public string CIN { get; set; }
     public string Nom { get; set; }
     public string Prenom { get; set; }
-    public int Tel { get; set; }
+    public string Tel { get; set; }
 
     public Client()
     {
@@ -25,7 +25,7 @@ public class Client : IAfficher
         this.Tel = "";
     }
 
-    public Client(string cin, string nom, string prenom, int tel)
+    public Client(string cin, string nom, string prenom, string tel)
     {
         CIN = cin;
         this.Nom = nom;
