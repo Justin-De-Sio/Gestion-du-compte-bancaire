@@ -44,7 +44,7 @@ public class Client : IAfficher
 
     public void Afficher()
     {
-        Console.WriteLine($"Client : \n\t CIN={CIN}\n\t nom= { Nom } \n\t prenom={Prenom}\n\t tel= {Tel}");
+        Console.WriteLine($"Client : CIN= {CIN}\n\t nom= { Nom } \n\t prenom= {Prenom}\n\t tel= {Tel}");
     }
 }
 
@@ -102,7 +102,7 @@ public class Compte : IAfficher
 
     public void Afficher()
     {
-        Console.WriteLine($"Compte Client= {Client}, Solde= {solde}, id={id}.");
+        Console.WriteLine($"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id}.");
     }
 
     public int NumberOfAcount()
@@ -115,6 +115,15 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        Client thomas = new Client("azert", "ROBERT", "Thomas", "+1234567890");
+        Client justin = new Client("azerty", "DE SIO", "Justin", "+331234567890");
         
+        thomas.Afficher();
+        justin.Afficher();
+
+        Compte a = new Compte(123, thomas);
+        Compte b = new Compte(123456, justin);
+        a.Afficher();
+        b.Afficher();
     }
 }
