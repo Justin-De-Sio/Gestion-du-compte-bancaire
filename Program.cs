@@ -64,13 +64,13 @@ public class Compte : IAfficher
         id = compteur;
     }
 
-    public Compte(double solde, Client client) : base()
+    public Compte(double solde, Client client) : this()
     {
         this.solde = solde;
         this.Client = client;
     }
 
-    public Compte(Compte compte) : base()
+    public Compte(Compte compte) : this()
     {
         this.Client = compte.Client;
         this.solde = compte.solde;
