@@ -52,8 +52,8 @@ public class Compte : IAfficher
 {
     private double solde;
     private int id;
-    public Client client;
-    public static int compteur = 0;
+    public Client Client;
+    private static int compteur = 0;
     
     public double Solde => solde;
     public int Id => id;
@@ -67,13 +67,12 @@ public class Compte : IAfficher
     public Compte(double solde, Client client) : base()
     {
         this.solde = solde;
-        this.client = client;
-        // TODO numéro de compte
+        this.Client = client;
     }
 
     public Compte(Compte compte) : base()
     {
-        this.client = compte.client;
+        this.Client = compte.Client;
         this.solde = compte.solde;
         this.id = compte.id;
     }
@@ -103,7 +102,7 @@ public class Compte : IAfficher
 
     public void Afficher()
     {
-        Console.WriteLine($"Compte Client= {client}, Solde= {solde}, id={id}.");
+        Console.WriteLine($"Compte Client= {Client}, Solde= {solde}, id={id}.");
     }
 
     public int NumberOfAcount()
