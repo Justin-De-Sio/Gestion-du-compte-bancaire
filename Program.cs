@@ -102,7 +102,7 @@ public class Compte : IAfficher
 
     public void Afficher()
     {
-        Console.WriteLine($"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id}.");
+        Console.WriteLine($"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t Nombre de compte= {compteur}.");
     }
 
     public int NumberOfAcount()
