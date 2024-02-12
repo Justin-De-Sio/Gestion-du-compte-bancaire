@@ -229,9 +229,14 @@ public class Program
         a.Afficher();
         
         Console.WriteLine("Nombre de compte : " + Compteur.NombreDeCompte);
+
+        TestCreationClient();
+        TestCreationCompt();
+        TestDebitCredit();
+        TestSoldeNonSuffisant();
     }
 
-    private void TestCreationClient()
+    private static void TestCreationClient()
     {
         Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
         Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
@@ -249,7 +254,7 @@ public class Program
         ThomasCopie.Afficher();
     }
 
-    private void TestCreationCompt()
+    private static void TestCreationCompt()
     {
         Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
         Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
@@ -264,22 +269,27 @@ public class Program
         Console.WriteLine("Comte créer par default : ");
         defaut.Afficher();
         
-        Console.WriteLine("Nombre de compte (3): " + Compteur.NombreDeCompte);
+        Console.WriteLine("Nombre de compte (7): " + Compteur.NombreDeCompte);
         Compte thom2 = new Compte(1000, Thomas);
     }
 
-    private void TestDebitCredit()
+    private static void TestDebitCredit()
     {
         Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
         Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
         Compte thom = new Compte(10000, Thomas);
         Compte just = new Compte(20000, Justin);
+        
+        thom.Crediter(1000, just);
     }
 
-    private void TestSoldeNonSuffisant()
+    private static void TestSoldeNonSuffisant()
     {
+        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(0, Thomas);
+        Compte just = new Compte(20000, Justin);
         
+        thom.Crediter(1000, just);
     }
-    
-    
 }
