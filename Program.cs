@@ -63,6 +63,11 @@ public class Client : IAfficher
     {
         Console.WriteLine($"Client : CIN= {CIN}\n\t nom= {Nom} \n\t prenom= {Prenom}\n\t tel= {Tel}");
     }
+
+    public override string ToString()
+    {
+        return $"CIN= {CIN} \n\t nom= {Nom} \n\t prenom= {Prenom} \n\t tel= {Tel}";
+    }
 }
 
 /// <summary>
