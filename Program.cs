@@ -228,4 +228,56 @@ public class Program
         c.Afficher();
         a.Afficher();
     }
+
+    private void TestCreationClient()
+    {
+        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Client defaut = new Client();
+        Client ThomasCopie = new Client(Thomas);
+        
+        Console.WriteLine("clients créer par paramêtre : ");
+        Thomas.Afficher();
+        Justin.Afficher();
+        
+        Console.WriteLine("Client créer par defaut : ");
+        defaut.Afficher();
+        
+        Console.WriteLine("Client créer par copie : ");
+        ThomasCopie.Afficher();
+    }
+
+    private void TestCreationCompt()
+    {
+        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(10000, Thomas);
+        Compte just = new Compte(20000, Justin);
+        Compte defaut = new Compte();
+        
+        Console.WriteLine("Compte créer avec parametre : ");
+        thom.Afficher();
+        just.Afficher();
+        
+        Console.WriteLine("Comte créer par default : ");
+        defaut.Afficher();
+        
+        Console.WriteLine("Nombre de compte (3): " + Compteur.NombreDeCompte);
+        Compte thom2 = new Compte(1000, Thomas);
+    }
+
+    private void TestDebitCredit()
+    {
+        Client Thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
+        Client Justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
+        Compte thom = new Compte(10000, Thomas);
+        Compte just = new Compte(20000, Justin);
+    }
+
+    private void TestSoldeNonSuffisant()
+    {
+        
+    }
+    
+    
 }
