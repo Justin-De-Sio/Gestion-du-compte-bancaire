@@ -78,7 +78,7 @@ public class Compte : IAfficher
     }
 
 
-    public void Crediter(double solde)
+    private void Crediter(double solde)
     {
         this.solde += solde;
     }
@@ -89,7 +89,7 @@ public class Compte : IAfficher
         compte.Debiter(solde);
     }
 
-    public void Debiter(double solde)
+    private void Debiter(double solde)
     {
         this.solde -= solde;
     }
@@ -125,5 +125,10 @@ public class Program
         Compte b = new Compte(123456, justin);
         a.Afficher();
         b.Afficher();
+
+        Compte c = new Compte(1234, thomas);
+        c.Afficher();
+        
+        a.Crediter(100, b);
     }
 }
