@@ -126,16 +126,16 @@ public class Compte : IAfficher
     }
 
     /// <summary>
-    /// Méthode permettant à un utilisateur créditeur de réaliser une transaction avec un autre compte
+    ///  Crédit le compte et débit le compte passé en paramètres. 
     /// </summary>
     /// <param name="solde">solde à créditer</param>
     /// <param name="compte">compte à débiter</param>
     public void Crediter(double solde, Compte compte)
     {
-        if (this.solde >= solde)
+        if (compte.solde >= solde)
         {
-            this.Debiter(solde);
-            compte.Crediter(solde);
+            compte.Debiter(solde);
+            this.Crediter(solde);
         }
         else
         {
@@ -153,14 +153,21 @@ public class Compte : IAfficher
     }
 
     /// <summary>
-    /// Méthode permettant à un utilisateur débiteur de réaliser une transaction avec un autre compte
+    /// débit le compte le compte et créditant le compte passé en paramètres. 
     /// </summary>
     /// <param name="solde">solde à débiter</param>
     /// <param name="compte">compte à créditer</param>
     public void Debiter(double solde, Compte compte)
     {
-        this.solde -= solde;
-        compte.Crediter(solde);
+        if (this.solde >= solde)
+        {
+            this.Debiter(solde);
+            compte.Crediter(solde);
+        }
+        else
+        {
+            Console.WriteLine("Solde insuffisant");
+        } 
     }
 
     /// <summary>
