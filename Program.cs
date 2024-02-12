@@ -227,5 +227,7 @@ public class Program
         d.Afficher();
         c.Afficher();
         a.Afficher();
+        
+        Console.WriteLine("Nombre de compte : " + Compteur.NombreDeCompte);
     }
 }
