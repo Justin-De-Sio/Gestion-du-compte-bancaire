@@ -9,6 +9,7 @@ public interface IAfficher
 {
     public void Afficher();
 }
+
 /// <summary>
 /// Class permettant de créer un Client
 /// </summary>
@@ -18,7 +19,7 @@ public class Client : IAfficher
     public string Nom { get; set; }
     public string Prenom { get; set; }
     public string Tel { get; set; }
-    
+
     /// <summary>
     /// Constructeur par defaut
     /// </summary>
@@ -29,7 +30,7 @@ public class Client : IAfficher
         this.Prenom = "";
         this.Tel = "";
     }
-    
+
     /// <summary>
     /// Constructeur paramétré
     /// </summary>
@@ -153,7 +154,7 @@ public class Compte : IAfficher
     }
 
     /// <summary>
-    /// débit le compte le compte et créditant le compte passé en paramètres. 
+    /// débit le compte et créditant le compte passé en paramètres. 
     /// </summary>
     /// <param name="solde">solde à débiter</param>
     /// <param name="compte">compte à créditer</param>
@@ -167,7 +168,7 @@ public class Compte : IAfficher
         else
         {
             Console.WriteLine("Solde insuffisant");
-        } 
+        }
     }
 
     /// <summary>
@@ -203,7 +204,7 @@ public static class Compteur
     {
         NombreDeCompte++;
     }
-    
+
     /// <summary>
     /// Méthode décrémentant le nombre de compte
     /// </summary>
@@ -211,9 +212,8 @@ public static class Compteur
     {
         NombreDeCompte--;
     }
-    
-    
 }
+
 public class Program
 {
     public static void Main(string[] args)
@@ -243,7 +243,7 @@ public class Program
         d.Afficher();
         c.Afficher();
         a.Afficher();
-        
+
         Console.WriteLine("Nombre de compte : " + Compteur.NombreDeCompte);
 
         TestCreationClient();
@@ -258,14 +258,14 @@ public class Program
         Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
         Client defaut = new Client();
         Client thomasCopie = new Client(thomas);
-        
+
         Console.WriteLine("clients créer par paramêtre : ");
         thomas.Afficher();
         justin.Afficher();
-        
+
         Console.WriteLine("Client créer par defaut : ");
         defaut.Afficher();
-        
+
         Console.WriteLine("Client créer par copie : ");
         thomasCopie.Afficher();
     }
@@ -277,14 +277,14 @@ public class Program
         Compte thom = new Compte(10000, thomas);
         Compte just = new Compte(20000, justin);
         Compte defaut = new Compte();
-        
+
         Console.WriteLine("Compte créer avec parametre : ");
         thom.Afficher();
         just.Afficher();
-        
+
         Console.WriteLine("Comte créer par default : ");
         defaut.Afficher();
-        
+
         Console.WriteLine("Nombre de compte (7): " + Compteur.NombreDeCompte);
         Compte thom2 = new Compte(1000, thomas);
     }
@@ -295,22 +295,23 @@ public class Program
         Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
         Compte thom = new Compte(10000, thomas);
         Compte just = new Compte(20000, justin);
-        
+
         Console.WriteLine("Avant le Crédit");
         thom.Afficher();
         just.Afficher();
         thom.Crediter(1000, just);
         Console.WriteLine("Apres le Crédit");
         thom.Afficher();
-        justin.Afficher();    }
-    
+        justin.Afficher();
+    }
+
     private static void TestDebit()
     {
         Client thomas = new Client("AZ1234", "ROBERT", "Thomas", "+33123456789");
         Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
         Compte thom = new Compte(10000, thomas);
         Compte just = new Compte(20000, justin);
-        
+
         Console.WriteLine("Avant le Débit");
         thom.Afficher();
         just.Afficher();
@@ -326,7 +327,7 @@ public class Program
         Client justin = new Client("AZ123456789", "DE SIO", "Justin", "+330987654321");
         Compte thom = new Compte(0, thomas);
         Compte just = new Compte(20000, justin);
-        
+
         thom.Crediter(1000, just);
     }
 }
