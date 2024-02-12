@@ -182,7 +182,7 @@ public class Compte : IAfficher
     public void Afficher()
     {
         Console.WriteLine(
-            $"Compte : Client= {Client} \n\t Solde= {solde} \n\t id={id} \n\t");
+            $"Compte : Client= \n {Client} \n\t Solde= {solde} \n\t id={id} \n\t");
     }
 
     /// <summary>
