@@ -9,14 +9,16 @@ public interface IAfficher
 {
     public void Afficher();
 }
-
+/// <summary>
+/// Class permettant de créer un Client
+/// </summary>
 public class Client : IAfficher
 {
     public string CIN { get; set; }
     public string Nom { get; set; }
     public string Prenom { get; set; }
     public string Tel { get; set; }
-
+    
     public Client()
     {
         this.CIN = "";
@@ -24,7 +26,7 @@ public class Client : IAfficher
         this.Prenom = "";
         this.Tel = "";
     }
-
+    
     public Client(string cin, string nom, string prenom, string tel)
     {
         CIN = cin;
@@ -128,5 +130,12 @@ public class Program
 
         a.Afficher();
         b.Afficher();
+
+        // Permet de tester la création d'un compte par copie et d'afficher les différents en compte en cas de modification
+        Compte d = new Compte(c);
+        d.Crediter(1000, a);
+        d.Afficher();
+        c.Afficher();
+        a.Afficher();
     }
 }
