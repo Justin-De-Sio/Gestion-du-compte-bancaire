@@ -130,5 +130,8 @@ public class Program
         c.Afficher();
         
         a.Crediter(100, b);
+        
+        a.Afficher();
+        b.Afficher();
     }
 }
